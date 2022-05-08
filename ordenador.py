@@ -19,6 +19,7 @@ plt.title("Mapa de coordenadas",fontsize=15)
 #trazar puntos
 for i in range(len(Pos)):
     plt.plot(float(Pos[i][1]),float(Pos[i][2]),marker="*", color="red")
+    plt.text(float(Pos[i][1])+0.3, float(Pos[i][2])+0.3, Pos[i][0], fontsize=10, color='black')
 #Trazar rectas
 x=[]
 y=[]
@@ -33,7 +34,8 @@ for o in range(len(Pos)):
         x.append(float(Pos[i][1]))
         y.append(float(Pos[i][2]))
         Grafo.add_node(Pos[o][0])
-        Grafo.add_edge(Pos[o][0],Pos[i][0])
+        if(Pos[o][0] != Pos[i][0]):
+            Grafo.add_edge(Pos[o][0],Pos[i][0])
         plt.plot(x,y,color='b',linewidth=0.05)
         print(x)
         print(y)
@@ -41,6 +43,7 @@ for o in range(len(Pos)):
         y=[]
 print(Grafo.nodes)
 print(Grafo.edges)
+print(Grafo)
 #trazador de rectas
 #for i in range(len(Pos)):
     
