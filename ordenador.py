@@ -3,8 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import networkx as nx
  
-G = nx.Graph() # crear un grafo
-
+Grafo = nx.Graph() # crear un grafo
 Pos = [] # arreglo original con todas las coordenadas
 
 with open('t1.csv') as csvfile:
@@ -23,20 +22,25 @@ for i in range(len(Pos)):
 #Trazar rectas
 x=[]
 y=[]
-grafo = {}
+
+#for o in range(len(Pos)):
+    
+
 for o in range(len(Pos)):
     for i in range(len(Pos)):
         x.append(float(Pos[o][1]))
         y.append(float(Pos[o][2]))
         x.append(float(Pos[i][1]))
         y.append(float(Pos[i][2]))
-        grafo = grafo.append(Pos[o][0])
+        Grafo.add_node(Pos[o][0])
+        Grafo.add_edge(Pos[o][0],Pos[i][0])
         plt.plot(x,y,color='b',linewidth=0.05)
         print(x)
         print(y)
         x=[]
         y=[]
-
+print(Grafo.nodes)
+print(Grafo.edges)
 #trazador de rectas
 #for i in range(len(Pos)):
     
