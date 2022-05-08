@@ -39,16 +39,16 @@ for o in range(len(Pos)):
         Grafo.add_node(Pos[o][0])
         if(Pos[o][0] != Pos[i][0]):
             #Grafo.add_node(Pos[o][0])
-            Grafo.add_edge(Pos[o][0],Pos[i][0])
-            Grafo.nodes[Pos[o][0]][str(Pos[i][0])] = distance.euclidean(x,y)
+            Grafo.add_edge(Pos[o][0],Pos[i][0],dis=distance.euclidean(x,y))
+
         plt.plot(x,y,color='b',linewidth=0.05)
         print(x) 
         print(y)
         x=[]
         y=[]
-print(str(Grafo.nodes(data=True)))
-#print(Grafo.edges(data=True))
-
+print(Grafo.nodes())
+print(Grafo.edges(data=True))
+print(nx.dijkstra_path_length(Grafo,source='a',target='h',weight='dis'))
 print(Grafo)
 
 
