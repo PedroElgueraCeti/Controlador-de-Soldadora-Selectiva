@@ -1,9 +1,10 @@
 import csv
+
 from ctypes import c_char, c_char_p
 import matplotlib.pyplot as plt
 import numpy as np
 import networkx as nx
-import graphviz
+from scipy.spatial import distance
  
 Grafo = nx.Graph() # crear un grafo
 Pos = [] # arreglo original con todas las coordenadas
@@ -35,22 +36,20 @@ for o in range(len(Pos)):
         y.append(float(Pos[o][2]))
         x.append(float(Pos[i][1]))
         y.append(float(Pos[i][2]))
-        
+        Grafo.add_node(Pos[o][0])
         if(Pos[o][0] != Pos[i][0]):
-            #Grafo.add_edge(Pos[o][0],Pos[i][0]
             #Grafo.add_node(Pos[o][0])
-            Grafo.add_node(Pos[o][0])
-            Grafo.nodes[Pos[o][0]][str(Pos[i][0])] = str(Pos[i][2])
+            Grafo.add_edge(Pos[o][0],Pos[i][0])
+            Grafo.nodes[Pos[o][0]][str(Pos[i][0])] = distance.euclidean(x,y)
         plt.plot(x,y,color='b',linewidth=0.05)
         print(x) 
         print(y)
         x=[]
         y=[]
-print(Grafo.nodes(data=True))
+print(str(Grafo.nodes(data=True)))
 #print(Grafo.edges(data=True))
+
 print(Grafo)
 
-#trazador de rectas
-#for i in range(len(Pos)):
 
 plt.show()
