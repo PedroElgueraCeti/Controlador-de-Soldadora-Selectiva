@@ -1,6 +1,9 @@
 import csv
 import matplotlib.pyplot as plt
 import numpy as np
+import networkx as nx
+ 
+G = nx.Graph() # crear un grafo
 
 Pos = [] # arreglo original con todas las coordenadas
 
@@ -27,7 +30,7 @@ for o in range(len(Pos)):
         y.append(float(Pos[o][2]))
         x.append(float(Pos[i][1]))
         y.append(float(Pos[i][2]))
-        grafo = "{"+
+        grafo = grafo.append(Pos[o][0])
         plt.plot(x,y,color='b',linewidth=0.05)
         print(x)
         print(y)
